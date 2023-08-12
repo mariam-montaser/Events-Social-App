@@ -25,9 +25,10 @@ namespace API.Extensions
             {
                 options.AddPolicy("CorsPolicy", options =>
                 {
-                    options.AllowAnyMethod().AllowAnyHeader().WithOrigins("http://localhost:3000");
+                    options.AllowAnyMethod().AllowAnyHeader().AllowCredentials().WithOrigins("http://localhost:3000");
                 });
             });
+            services.AddSignalR();
             services.AddMediatR(typeof(List.Handler));
             services.AddAutoMapper(typeof(MappingProfiles));
             services.AddFluentValidationAutoValidation();
