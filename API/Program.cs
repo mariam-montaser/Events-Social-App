@@ -29,13 +29,13 @@ namespace API
 
             var app = builder.Build();
 
-            //app.UseMiddleware<ExceptionMiddleware>();
+            app.UseMiddleware<ExceptionMiddleware>();
             // Configure the HTTP request pipeline.
-            if (app.Environment.IsDevelopment())
-            {
-                app.UseSwagger();
-                app.UseSwaggerUI();
-            }
+            //if (app.Environment.IsDevelopment())
+            //{
+            //    app.UseSwagger();
+            //    app.UseSwaggerUI();
+            //}
 
             app.UseHttpsRedirection();
 
@@ -64,7 +64,7 @@ namespace API
             catch (Exception ex)
             {
 
-                ILogger logger = services.GetRequiredService<ILogger>();
+                ILogger logger = services.GetRequiredService<ILogger<Program>>();
                 logger.LogError(ex, "An error occured during migration");
             }
 
